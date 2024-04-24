@@ -119,15 +119,23 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                 elif not (str(media.file_name).lower()).endswith(tuple(INDEX_EXTENSIONS)):
                     unsupported += 1
                     continue
+                media.caption = message.caption
+                file_name = re.sub(r"@\w+|(_|\-|\.|\+)", " ", str(media.file_name))
+                sts = await save_file(media)
+                
+                    
                 
                 # Send message for each indexed file
                 try:
                     await bot.send_message(chat_id=LOG_CHANNEL, text=f"File: {media.file_name}\nCaption: {message.caption}",
                                             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get File", url=f"t.me/{bot.username}?start=download_file_{message.message_id}")]]))
+                if sts == 'suc':
                     total_files += 1
-                except Exception as e:
+                elif sts == 'dup':
+                    duplicate += 1
+                elif sts == 'err':
                     errors += 1
-        except Exception as e:
+        except Exception as e:  
             await msg.reply(f'Index canceled due to Error - {e}')
         else:
             await msg.edit(f'Succesfully saved <code>{total_files}</code> to Database!\nCompleted in {time_taken}\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>\nBad Files Ignoref: <code>{badfiles}</code>')
