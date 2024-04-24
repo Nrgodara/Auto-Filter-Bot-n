@@ -124,7 +124,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                 sts = await save_file(media)
                 
                 # Send message for each indexed file
-                file_identifier = f"{chat_id}_{message.date.strftime('%Y%m%d%H%M%S')}"
+                file_identifier = media.file_id
                 try:
                     await bot.send_message(chat_id=LOG_CHANNEL, text=f"File: {media.file_name}\nCaption: {message.caption}",
                             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get File", url=f"t.me/{temp.U_NAME}?start=download_file_{file_identifier}")]]))
