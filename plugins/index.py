@@ -133,6 +133,8 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                         duplicate += 1
                     elif sts == 'err':
                         errors += 1
+                    elif sts == 'bad':
+                        badfiles += 1
                 except Exception as e:
                     errors += 1
         except Exception as e:
