@@ -126,7 +126,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                 # Send message for each indexed file
                 try:
                     await bot.send_message(chat_id=LOG_CHANNEL, text=f"File: {media.file_name}\nCaption: {message.caption}",
-                                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get File", url=f"t.me/{bot.username}?start=download_file_{message.message_id}")]]))
+                                            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get File", url=f"t.me/{temp.U_NAME}?start=download_file_{message.message_id}")]]))
                     if sts == 'suc':
                         total_files += 1
                     elif sts == 'dup':
