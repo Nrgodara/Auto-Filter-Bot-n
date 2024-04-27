@@ -67,9 +67,9 @@ async def send_for_index(bot, message):
         return await message.reply("Number is invalid.")
 
     buttons = [[
-        InlineKeyboardButton('YES', callback_data=f'index#yes#{chat_id}#{last_msg_id}#{skip}')
+        InlineKeyboardButton('YES Index 💞', callback_data=f'index#yes#{chat_id}#{last_msg_id}#{skip}')
     ],[
-        InlineKeyboardButton('CLOSE', callback_data='close_data'),
+        InlineKeyboardButton('CLOSE 🫣', callback_data='close_data'),
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await message.reply(f'Do you want to index {chat.title} channel?\nTotal Messages: <code>{last_msg_id}</code>', reply_markup=reply_markup)
@@ -131,7 +131,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                         chat_id=LOG_CHANNEL,
                         text=f"File: {media.file_name}\nCaption: {message.caption}",
                         reply_markup=InlineKeyboardMarkup([
-                            [InlineKeyboardButton("Get File", url=f"https://t.me/{temp.U_NAME}?start=file_{file_id}")]
+                            [InlineKeyboardButton("Watch Now❤️‍🔥", url=f"https://t.me/{temp.U_NAME}?start=file_{file_id}")]
                         ])
                     )
         
@@ -156,4 +156,4 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
         except Exception as e:
             await msg.reply(f'Index canceled due to Error - {e}')
         else:
-            await msg.edit(f'Successfully saved <code>{total_files}</code> to Database!\nCompleted in {time_taken}\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>\nBad Files Ignoref: <code>{badfiles}</code>')
+            await msg.edit(f'Successfully saved <code>{total_files}</code> to Database!\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>\nBad Files Ignoref: <code>{badfiles}</code>')
