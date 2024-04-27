@@ -49,7 +49,11 @@ async def save_file(media):
             return 'dup'
         else:
             print(f'Saved - {file_name}')
-            return 'suc'
+            # After the file is saved
+            saved_file = await file.commit()
+            file_id = saved_file.file_id
+            return file_id
+            #return 'suc'
 
 async def get_search_results(query, max_results=MAX_BTN, offset=0, lang=None):
     query = query.strip()
