@@ -81,10 +81,10 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Files')
 
 # Links
-SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/HA_Bots_Support')
-OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/Hansaka_Anuhas")
-UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/HA_Bots')
-FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/HA_Films_World')
+SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/+RrYHGxZqqX9lOGQ9')
+OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/Mr_Mahiji")
+UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/+055Dfay4AsNjYWE1')
+FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/moviesearch_grouptelegram')
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/HA_Bots")
 VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/HA_Bots")
 
