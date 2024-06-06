@@ -1,5 +1,6 @@
-import re, logging
-import os 
+import re
+import logging
+import os
 from os import environ
 from Script import script
 
@@ -124,8 +125,8 @@ if 'DYNO' in environ:
     APP_NAME = environ.get('APP_NAME')
 else:
     ON_HEROKU = False
-BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
-FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+BIND_ADRESS = str(os.getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(os.getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or os.getenv('FQDN') else APP_NAME+'.herokuapp.com'
 URL = "https://new-movie-filter-9ea039955620.herokuapp.com/".format(FQDN) if ON_HEROKU or NO_PORT else \
     "https://new-movie-filter-9ea039955620.herokuapp.com/".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
@@ -136,11 +137,10 @@ name = str(environ.get('name', 'LazyPrincess'))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 if 'DYNO' in environ:
     ON_HEROKU = True
-    APP_NAME = str(getenv('APP_NAME'))
-
+    APP_NAME = str(os.getenv('APP_NAME'))
 else:
     ON_HEROKU = False
-HAS_SSL=bool(getenv('HAS_SSL',False))
+HAS_SSL = bool(os.getenv('HAS_SSL', False))
 if HAS_SSL:
     URL = "https://new-moviefilter-0e7872415e8c.herokuapp.com/".format(FQDN)
 else:
