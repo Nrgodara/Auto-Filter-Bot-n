@@ -118,6 +118,15 @@ SHORTLINK = is_enabled('SHORTLINK', False)
 PAYMENT_QR = environ.get('PAYMENT_QR', 'https://graph.org/file/6c844a014331ff538602e.jpg')
 
 # Online Stream and Download
+IS_STREAM = is_enabled('IS_STREAM', True)
+BIN_CHANNEL = environ.get("BIN_CHANNEL", "")
+if len(BIN_CHANNEL) == 0:
+    print('Error - BIN_CHANNEL is missing, exiting now')
+    exit()
+else:
+    BIN_CHANNEL = int(BIN_CHANNEL)
+
+
 NO_PORT = bool(environ.get('NO_PORT', False))
 APP_NAME = None
 if 'DYNO' in environ:
