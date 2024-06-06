@@ -1,5 +1,5 @@
 import re, logging
-from os import environ
+import os 
 from Script import script
 
 def is_enabled(type, value):
