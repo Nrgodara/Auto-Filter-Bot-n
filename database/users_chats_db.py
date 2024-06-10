@@ -34,8 +34,8 @@ class Database:
     }
     
     def __init__(self):
-        self.col = mydb.Users
-        self.grp = mydb.Groups
+        self.col = mydb.users
+        self.grp = mydb.groups
         self.users = mydb.uersz
 
     def new_user(self, id, name):
@@ -79,7 +79,7 @@ class Database:
         )
         await self.col.update_one({'id': id}, {'$set': {'ban_status': ban_status}})
     
-    async def ban_user(self, user_id, ban_reason="No Reason"):
+    async def ban_user(self, user_id, ban_reason="Don't want to Explain 😏"):
         ban_status = dict(
             is_banned=True,
             ban_reason=ban_reason
