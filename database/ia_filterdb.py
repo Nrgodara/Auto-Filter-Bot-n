@@ -32,7 +32,7 @@ logger.setLevel(logging.INFO)
 
 
 
-client = AsyncIOMotorClient(DATABASE_URI)
+client = AsyncIOMotorClient(DATABASE_URL)
 
 db = client[DATABASE_NAME]
 
