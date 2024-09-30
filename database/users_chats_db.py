@@ -35,9 +35,9 @@ class Database:
     }
     
     def __init__(self):
-        self.col = mydb.Users
-        self.grp = mydb.Groups
-        self.users = mydb.Users
+        self.col = mydb.users
+        self.grp = mydb.groups
+        self.users = mydb.users
         self.botcol = mydb["bot_id"]
 
     def new_user(self, id, name):
