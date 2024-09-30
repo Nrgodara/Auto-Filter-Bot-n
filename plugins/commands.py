@@ -281,8 +281,8 @@ async def settings(client, message):
     settings = await get_settings(grp_id)
     if settings is not None:
         buttons = [[
-            InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
+            InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}'),
+            InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}')
         ],[
             InlineKeyboardButton('IMDb Poster', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
             InlineKeyboardButton('✅ Yes' if settings["imdb"] else '❌ No', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
