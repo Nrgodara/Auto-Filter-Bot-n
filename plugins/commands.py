@@ -282,7 +282,7 @@ async def settings(client, message):
     if settings is not None:
         buttons = [[
             InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}')
+            InlineKeyboardButton('✅ Yes' if settings["auto_ffilter"] else '❌ No', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}')
         ],[
             InlineKeyboardButton('IMDb Poster', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
             InlineKeyboardButton('✅ Yes' if settings["imdb"] else '❌ No', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
