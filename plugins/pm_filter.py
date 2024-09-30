@@ -51,7 +51,7 @@ async def group_search(client, message):
     chat_id = message.chat.id
     settings = await get_settings(chat_id)
     user_id = message.from_user.id if message and message.from_user else 0
-    if settings["auto_filter"]:
+    if settings["auto_ffilter"]:
         if not user_id:
             await message.reply("I'm not working for anonymous admin!")
             return
