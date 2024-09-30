@@ -64,11 +64,11 @@ class Database:
     
     async def add_user(self, id, name):
         user = self.new_user(id, name)
-        await self.col.insert_one(User)
+        await self.col.insert_one(user)
     
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id':int(id)})
-        return bool(User)
+        return bool(user)
     
     async def total_users_count(self):
         count = await self.col.count_documents({})
