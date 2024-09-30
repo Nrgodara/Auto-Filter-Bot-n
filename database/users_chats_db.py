@@ -37,7 +37,7 @@ class Database:
     def __init__(self):
         self.col = mydb.Users
         self.grp = mydb.Groups
-        self.users = mydb.uersz
+        self.users = mydb.Users
         self.botcol = mydb["bot_id"]
 
     def new_user(self, id, name):
@@ -64,11 +64,11 @@ class Database:
     
     async def add_user(self, id, name):
         user = self.new_user(id, name)
-        await self.col.insert_one(user)
+        await self.col.insert_one(User)
     
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id':int(id)})
-        return bool(user)
+        return bool(User)
     
     async def total_users_count(self):
         count = await self.col.count_documents({})
