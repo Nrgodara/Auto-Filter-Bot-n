@@ -1,5 +1,5 @@
 import re
-from os import environ
+from os import environ,getenv
 from Script import script
 
 def is_enabled(type, value):
