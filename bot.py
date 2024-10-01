@@ -81,17 +81,19 @@ class Bot(Client):
         #groups = await db.get_all_chats_count()
         #for grp in groups:
             #await save_group_settings(grp['id'], 'fsub', "")
-        app = web.AppRunner(web_app)
+       # app = web.AppRunner(web_app)
         #app = web.AppRunner(await web_server())
-        await app.setup()
-        await web.TCPSite(app, "0.0.0.0", PORT).start()
-        logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+        #await app.setup()
+       # await web.TCPSite(app, "0.0.0.0", PORT).start()
+        #logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+        
         
         try:
             app = web.AppRunner(web_app)
             await app.setup()
             await web.TCPSite(app, "0.0.0.0", PORT).start()
             logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+            await idle()
         except OSError as e:
             if e.errno == 98:  # Address already in use
                 logging.error(f"Port {PORT} is already in use. Please free the port or change it in the configuration.", exc_info=True)
