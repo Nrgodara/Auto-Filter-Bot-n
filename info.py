@@ -119,21 +119,30 @@ if len(BIN_CHANNEL) == 0:
     exit()
 else:
     BIN_CHANNEL = int(BIN_CHANNEL)
-URL = environ.get("URL", "")
-if len(URL) == 0:
-    print('Error - URL is missing, exiting now')
-    exit()
+#URL = environ.get("URL", "")
+#if len(URL) == 0:
+   # print('Error - URL is missing, exiting now')
+   # exit()
+#else:
+  #  if URL.startswith(('https://', 'http://')):
+    #    if not URL.endswith("/"):
+   #         URL += '/'
+   # elif is_valid_ip(URL):
+   #     URL = f'http://{URL}/'
+  #  else:
+    #    print('Error - URL is not valid, exiting now')
+    #    exit()
+NO_PORT = bool(environ.get('NO_PORT', False))
+APP_NAME = None
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = environ.get('APP_NAME')
 else:
-    if URL.startswith(('https://', 'http://')):
-        if not URL.endswith("/"):
-            URL += '/'
-    elif is_valid_ip(URL):
-        URL = f'http://{URL}/'
-    else:
-        print('Error - URL is not valid, exiting now')
-        exit()
-
+    ON_HEROKU = False
 BIND_ADRESS = str(environ.get('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(environ.get('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+URL = "https://movies-adda-by-mahi-6169a8ae44bd.herokuapp.com/".format(FQDN) if ON_HEROKU or NO_PORT else \
+    "https://movies-adda-by-mahi-6169a8ae44bd.herokuapp.com/".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
 WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
