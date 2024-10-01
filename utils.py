@@ -22,7 +22,7 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
     VERIFICATIONS = {}
-    FILES = {}
+    GETALL = {}
     USERS_CANCEL = False
     GROUPS_CANCEL = False
     BOT = None
