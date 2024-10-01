@@ -28,8 +28,10 @@ logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
 # local imports
 from web import web_app
+#from plugins import web_server
 from info import LOG_CHANNEL, API_ID, API_HASH, BOT_TOKEN, PORT, BIN_CHANNEL, ADMINS, DATABASE_URL
 from utils import temp, get_readable_time
+from web.utils.keepalive import ping_server
 
 # pymongo and database imports
 from database.users_chats_db import db
@@ -79,8 +81,8 @@ class Bot(Client):
         #groups = await db.get_all_chats_count()
         #for grp in groups:
             #await save_group_settings(grp['id'], 'fsub', "")
-        #app = web.AppRunner(web_app)
-        app = web.AppRunner(await web_app())
+        app = web.AppRunner(web_app)
+        #app = web.AppRunner(await web_server())
         await app.setup()
         await web.TCPSite(app, "0.0.0.0", PORT).start()
         logging.info(f"{me.first_name} 💚 started on {me.username}.")
