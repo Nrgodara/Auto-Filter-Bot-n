@@ -4,6 +4,7 @@ import asyncio
 
 # pyrogram imports
 from pyrogram import types
+from pyrogram import idle
 from pyrogram import Client
 from pyrogram.errors import FloodWait
 
