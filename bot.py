@@ -86,7 +86,21 @@ class Bot(Client):
         await app.setup()
         await web.TCPSite(app, "0.0.0.0", PORT).start()
         logging.info(f"{me.first_name} 💚 started on @{me.username}.")
-        #logging.info(LOG_STR)
+        try:
+            app = web.AppRunner(web_app)
+            await app.setup()
+            await web.TCPSite(app, "0.0.0.0", PORT).start()
+            logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+        except Exception as e:
+            logging.error("Failed to start the web server.", exc_info=True)
+            logging.error("Quitting the Process 😒💔")
+            exit()
+         
+        
+    
+      
+
+        
         
         try:
             await self.send_message(chat_id=LOG_CHANNEL, text=f"<b>{me.mention} Restarted! 🤖</b>")
