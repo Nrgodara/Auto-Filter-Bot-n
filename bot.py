@@ -86,14 +86,20 @@ class Bot(Client):
         await app.setup()
         await web.TCPSite(app, "0.0.0.0", PORT).start()
         logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+        
         try:
             app = web.AppRunner(web_app)
             await app.setup()
             await web.TCPSite(app, "0.0.0.0", PORT).start()
             logging.info(f"{me.first_name} 💚 started on @{me.username}.")
+        except OSError as e:
+            if e.errno == 98:  # Address already in use
+                logging.error(f"Port {PORT} is already in use. Please free the port or change it in the configuration.", exc_info=True)
+            else:
+                logging.error("Failed to start the web server due to an OS error.", exc_info=True)
+            exit()
         except Exception as e:
-            logging.error("Failed to start the web server.", exc_info=True)
-            logging.error("Quitting the Process 😒💔")
+            logging.error("An unexpected error occurred while starting the web server.", exc_info=True)
             exit()
          
         
