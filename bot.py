@@ -80,7 +80,7 @@ class Bot(Client):
         #for grp in groups:
             #await save_group_settings(grp['id'], 'fsub', "")
         #app = web.AppRunner(web_app)
-        app = web.AppRunner(await web_server())
+        app = web.AppRunner(await web_app())
         await app.setup()
         await web.TCPSite(app, "0.0.0.0", PORT).start()
         logging.info(f"{me.first_name} 💚 started on {me.username}.")
