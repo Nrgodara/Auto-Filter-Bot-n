@@ -8,7 +8,7 @@ mydb = client[DATABASE_NAME]
 
 class Database:
     default_setgs = {
-        'auto_filter': AUTO_FILTER,
+        'auto_ffilter': AUTO_FILTER,
         'file_secure': PROTECT_CONTENT,
         'imdb': IMDB,
         'spell_check': SPELL_CHECK,
@@ -21,7 +21,7 @@ class Database:
         'api': SHORTLINK_API,
         'shortlink': SHORTLINK,
         'tutorial': TUTORIAL,
-        'links': LINK_MODE,
+        'button': LINK_MODE,
         'fsub': "",
         'is_stream': IS_STREAM
     }
