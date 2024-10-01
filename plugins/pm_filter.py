@@ -756,8 +756,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if settings is not None:
             buttons = [[
-                InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
+                InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}'),
+                InlineKeyboardButton('✅ Yes' if settings["auto_ffilter"] else '❌ No', callback_data=f'setgs#auto_ffilter#{settings["auto_ffilter"]}#{grp_id}')
             ],[
                 InlineKeyboardButton('IMDb Poster', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
                 InlineKeyboardButton('✅ Yes' if settings["imdb"] else '❌ No', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
@@ -774,8 +774,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton('Shortlink', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
                 InlineKeyboardButton('✅ Yes' if settings["shortlink"] else '❌ No', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
             ],[
-                InlineKeyboardButton('Result Page', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
-                InlineKeyboardButton('⛓ Link' if settings["links"] else '🧲 Button', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}')
+                InlineKeyboardButton('Result Page', callback_data=f'setgs#links#{settings["button"]}#{str(grp_id)}'),
+                InlineKeyboardButton('🧲 Button' if settings["button"] else '🧲 ⛓ Link', callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
             ],[
                 InlineKeyboardButton('Stream', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}'),
                 InlineKeyboardButton('✅ On' if settings.get("is_stream", IS_STREAM) else '❌ Off', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}')
