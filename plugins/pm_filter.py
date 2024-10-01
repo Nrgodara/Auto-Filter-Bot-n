@@ -930,19 +930,20 @@ async def auto_filter(client, msg, s, spoll=False):
         search, files, offset, total_results = spoll
     req = message.from_user.id if message and message.from_user else 0
     key = f"{message.chat.id}-{message.id}"
-    temp.FILES[key] = files
+    temp.GETALL[key] = files
     BUTTONS[key] = search
     files_link = ""
-    if settings['links']:
-        btn = []
-        for file_num, file in enumerate(files, start=1):
-            files_link += f"""<b>\n\n{file_num}. <a href=https://t.me/{temp.U_NAME}?start=file_{message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
-    else:
+    if settings['button']:
         btn = [[
             InlineKeyboardButton(text=f"📂 {get_size(file.file_size)} {file.file_name}", callback_data=f'file#{file.file_id}')
         ]
             for file in files
-        ]   
+              ]
+    else:
+        btn = []
+        for file_num, file in enumerate(files, start=1):
+            files_link += f"""<b>\n\n{file_num}. <a href=https://t.me/{temp.U_NAME}?start=file_{message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {file.file_name}</a></b>"""
+       
     if offset != "":
         if settings['shortlink'] and not await db.has_premium_access(message.from_user.id):
             btn.insert(0,
