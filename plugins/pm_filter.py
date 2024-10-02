@@ -16,14 +16,14 @@ BUTTONS = {}
 CAP = {}
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
-async def react(client, message):
+async def pm_search(client, message):
     try:
         await message.react(emoji=random.choice(REACTIONS), big=True)
         await asyncio.sleep(1.1)
         await message.react(emoji=random.choice(REACTIONS), big=True)
-    except:
+    except error as e:
+        print {e}
         await message.react(emoji="⚡️", big=True)
-async def pm_search(client, message):
     bot_id = client.me.id
     files, n_offset, total = await get_search_results(message.text)
     btn = [[
