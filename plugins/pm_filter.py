@@ -1,5 +1,6 @@
 import asyncio
 import re
+import random
 from time import time as time_now
 import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
