@@ -22,7 +22,7 @@ async def pm_search(client, message):
         await asyncio.sleep(1.1)
         await message.react(emoji=random.choice(REACTIONS), big=True)
     except error as e:
-        print {e}
+        print (f"{e}")
         await message.react(emoji="⚡️", big=True)
     bot_id = client.me.id
     files, n_offset, total = await get_search_results(message.text)
