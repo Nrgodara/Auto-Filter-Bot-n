@@ -163,7 +163,7 @@ async def start(client, message):
                 chat_id=message.from_user.id,
                 file_id=file.file_id,
                 caption=f_caption,
-                protect_content=False if await db.has_premium_access(message.from_user.id) else True,
+                #protect_content=False if await db.has_premium_access(message.from_user.id) else True,
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             file_ids.append(msg.id)
@@ -222,7 +222,7 @@ async def start(client, message):
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=f_caption,
-        protect_content=False if await db.has_premium_access(message.from_user.id) else True,
+        #protect_content=False if await db.has_premium_access(message.from_user.id) else True,
         reply_markup=InlineKeyboardMarkup(btn)
     )
     time = get_readable_time(PM_FILE_DELETE_TIME)
@@ -378,6 +378,7 @@ async def save_shortlink(client, message):
     await message.reply_text(f"Successfully changed shortlink for {title} to\n\nURL - {url}\nAPI - {api}")
     
 @Client.on_message(filters.command('get_custom_settings'))
+
 async def get_custom_settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -485,7 +486,7 @@ async def set_tutorial(client, message):
     await save_group_settings(grp_id, 'tutorial', tutorial)
     await message.reply_text(f"Successfully changed tutorial for {title} to\n\n{tutorial}")
 
-@Client.on_message(filters.command('telegraph'))
+@Client.on_message(filters.command('telegraphhh'))
 async def telegraph(bot, message):
     reply_to_message = message.reply_to_message
     if not reply_to_message:
@@ -588,7 +589,7 @@ async def check_plans_cmd(client, message):
         await message.reply_text(f"**Your plans details are :\n\nRemaining Time : {remaining_time}\n\nExpirytime : {expiry_time}**")
     else:
         btn = [ 
-            [InlineKeyboardButton("ɢᴇᴛ ғʀᴇᴇ ᴛʀᴀɪʟ ғᴏʀ 𝟻 ᴍɪɴᴜᴛᴇꜱ ☺️", callback_data="get_trail")],
+            [InlineKeyboardButton("ɢᴇᴛ ғʀᴇᴇ ᴛʀɪᴀʟ ғᴏʀ 60 ᴍɪɴᴜᴛᴇꜱ ☺️", callback_data="get_trail")],
             [InlineKeyboardButton("ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ : ʀᴇᴍᴏᴠᴇ ᴀᴅs", callback_data="buy_premium")],
             [InlineKeyboardButton("⚠️ ᴄʟᴏsᴇ / ᴅᴇʟᴇᴛᴇ ⚠️", callback_data="close_data")]
         ]
