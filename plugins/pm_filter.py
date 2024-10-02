@@ -16,7 +16,10 @@ BUTTONS = {}
 CAP = {}
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
-try:
+async def react(client, message):
+    try:
+        await message.react(emoji=random.choice(REACTIONS), big=True)
+        await asyncio.sleep(1.1)
         await message.react(emoji=random.choice(REACTIONS), big=True)
     except:
         await message.react(emoji="⚡️", big=True)
@@ -41,11 +44,9 @@ async def pm_search(client, message):
             await message.reply_text('<b><i>📢 ꜱᴇɴᴅ ᴍᴏᴠɪᴇ ᴏʀ ꜱᴇʀɪᴇꜱ ʀᴇǫᴜᴇꜱᴛ ʜᴇʀᴇ 👇</i></b>', reply_markup=reply_markup)
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
-try:
-        await message.react(emoji=random.choice(REACTIONS), big=True)
-    except:
-        await message.react(emoji="⚡️", big=True)
+
 async def group_search(client, message):
+        await react(client, message)
     try:
         client_id = (await client.get_me()).id
         vp = await client.get_chat_member(message.chat.id, client_id)
