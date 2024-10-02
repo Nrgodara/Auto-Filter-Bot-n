@@ -46,7 +46,7 @@ async def pm_search(client, message):
 @Client.on_message(filters.group & filters.text & filters.incoming)
 
 async def group_search(client, message):
-        await react(client, message)
+    await react(client, message)
     try:
         client_id = (await client.get_me()).id
         vp = await client.get_chat_member(message.chat.id, client_id)
