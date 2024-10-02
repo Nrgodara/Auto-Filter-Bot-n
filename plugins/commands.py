@@ -56,6 +56,9 @@ async def start(client, message):
             InlineKeyboardButton('💰 ᴇᴀʀɴ ᴜɴʟɪᴍɪᴛᴇᴅ ᴍᴏɴᴇʏ ʙʏ ʙᴏᴛ 💰', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+        m=await message.reply_sticker("CAACAgUAAxkBAAIpbGb9EtaGBYiLtECtpLbZVYXTDC3JAAKeDwACpHAAAVf5ZwMX0VcfYjQE") 
+        await asyncio.sleep(2)
+        await m.delete()
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=script.START_TXT.format(message.from_user.mention, get_wish()),
